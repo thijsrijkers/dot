@@ -36,7 +36,8 @@ func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath str
 			log.Printf("Connection error: %v", err)
 			continue
 		}
-		// Handle connection here, still todo
+		// TODO: handle connection. Closed for now so sockets don't leak.
+		connection.Close()
 	}
 
 }
