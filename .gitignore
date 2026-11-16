@@ -34,3 +34,7 @@ go.work.sum
 
 # dot build output
 /binary/dot-server
+
+# Local config and keys
+/config.dot
+/keys/

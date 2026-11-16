@@ -12,7 +12,8 @@ func main() {
 	port := flag.String("port", "2222", "port to listen on")
 	hostKey := flag.String("host-key", "host_key", "path to host key")
 	authKeys := flag.String("authorized-keys", "authorized_keys", "path to authorized_keys")
+	root := flag.String("root", "repos", "directory holding bare repositories")
 	flag.Parse()
 
-	server.LaunchServer(*port, *hostKey, *authKeys)
+	server.LaunchServer(*port, *hostKey, *authKeys, *root)
 }

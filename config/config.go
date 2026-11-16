@@ -11,6 +11,7 @@ type Config struct {
 	Port         string `json:"port"`
 	HostKeyPath  string `json:"hostKeyPath"`
 	AuthKeysPath string `json:"authKeysPath"`
+	Root     string `json:"root"`
 }
 
 func LoadConfig(path string) (Config, error) {

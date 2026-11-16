@@ -10,8 +10,9 @@ Run all commands from the repository root:
    ```json
    {
      "port": "8282",
-     "hostKeyPath": "keys/host_key",
-     "authKeysPath": "keys/authorized_keys"
+     "hostKeyPath": "path/to/host_key_storage",
+     "authKeysPath": "path/to/authorized_keys_storage",
+     "root": "path/to/repository_storage"
    }
    ```
    A host key is generated at `hostKeyPath` on first start if none exists.
@@ -26,3 +27,10 @@ Run all commands from the repository root:
    ```sh
    nc -z localhost 8282 && echo up
    ```
+
+4. Create a bare repository and clone it (the SSH user must have a key in `authorized_keys`):
+   ```sh
+   git init --bare repos/demo.git
+   git clone ssh://<user>@localhost:8282/demo.git
+   ```
+   Only `git-upload-pack` (clone/fetch) and `git-receive-pack` (push) are accepted, and only for repos inside `root`.

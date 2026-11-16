@@ -1,6 +1,7 @@
 package server
 
 import (
+	"dot/git"
 	"log"
 	"net"
 
@@ -8,7 +9,11 @@ import (
 )
 
 
-func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath string) {
+func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath string, root string) {
+	if root == "" {
+		log.Fatal("Root is not set")
+	}
+
 	store, err := NewKeyStore(authorizationKeyStorePath)
 
 	if err != nil {
@@ -16,6 +21,7 @@ func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath str
 		return
 	}
 
+	log.Println("Loading store values...")
 	store.Load()
 
 	config := &ssh.ServerConfig{
@@ -36,9 +42,7 @@ func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath str
 			log.Printf("Connection error: %v", err)
 			continue
 		}
-		// TODO: handle connection. Closed for now so sockets don't leak.
-		connection.Close()
+		git.HandleConnection(connection, config, root)
 	}
-
 }
 

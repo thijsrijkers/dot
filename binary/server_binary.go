@@ -11,6 +11,7 @@ func LaunchServer(config config.Config) error {
 		"-port", config.Port,
 		"-host-key", config.HostKeyPath,
 		"-authorized-keys", config.AuthKeysPath,
+		"-root", config.Root,
 	)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
