@@ -50,7 +50,7 @@ func (store *KeyStore) AddAuthorizedKey(user string, line []byte) error {
 
 	fingerPrint := ssh.FingerprintSHA256(key)
 
-	if _, exists := s.keys[user][fingerPrint]; exists {
+	if _, exists := store.keys[user][fingerPrint]; exists {
 		return nil
 	}
 
@@ -106,7 +106,7 @@ func (store *KeyStore) Load() error {
 		key, _, _, _, err := ssh.ParseAuthorizedKey([]byte(strings.TrimSpace(rest)))
 	
 		if err != nil {
-			log.Printf("%s:%d: skipping invalid key: %v", scanner.path, lineNumber, err)
+			log.Printf("%s:%d: skipping invalid key: %v", store.path, lineNumber, err)
 			continue
 		}
 	
