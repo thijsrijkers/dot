@@ -12,6 +12,7 @@ func LaunchServer(config config.Config) error {
 		"-host-key", config.HostKeyPath,
 		"-authorized-keys", config.AuthKeysPath,
 		"-root", config.Root,
+    "-health-socket", config.HealthSocket,
 	)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr

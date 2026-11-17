@@ -9,7 +9,7 @@ import (
 )
 
 
-func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath string, root string) {
+func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath string, root string, healthSocket string) {
 	if root == "" {
 		log.Fatal("Root is not set")
 	}
@@ -35,6 +35,12 @@ func LaunchServer(port string, hostKeyPath string, authorizationKeyStorePath str
 		log.Fatalf("listen: %v", err)
 	}
 	log.Println("Dot server listening on port: "+port)
+
+	go func() {
+    if err := HealthCheck(healthSocket); err != nil {
+      log.Fatalf("health socket: %v", err)
+  	}
+  }()
 
 	for {
 		connection, err := listener.Accept()

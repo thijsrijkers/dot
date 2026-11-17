@@ -12,6 +12,7 @@ type Config struct {
 	HostKeyPath  string `json:"hostKeyPath"`
 	AuthKeysPath string `json:"authKeysPath"`
 	Root     string `json:"root"`
+  HealthSocket string `json:"healthSocket"`
 }
 
 func LoadConfig(path string) (Config, error) {

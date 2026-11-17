@@ -12,7 +12,8 @@ Run all commands from the repository root:
      "port": "8282",
      "hostKeyPath": "path/to/host_key_storage",
      "authKeysPath": "path/to/authorized_keys_storage",
-     "root": "path/to/repository_storage"
+     "root": "path/to/repository_storage",
+     "healthSocket": "path/to/health.sock"
    }
    ```
    A host key is generated at `hostKeyPath` on first start if none exists.

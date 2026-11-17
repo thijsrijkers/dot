@@ -13,7 +13,8 @@ func main() {
 	hostKey := flag.String("host-key", "host_key", "path to host key")
 	authKeys := flag.String("authorized-keys", "authorized_keys", "path to authorized_keys")
 	root := flag.String("root", "repos", "directory holding bare repositories")
+  healthSocket := flag.String("health-socket", "dot-health.sock", "unix socket for health checks")
 	flag.Parse()
 
-	server.LaunchServer(*port, *hostKey, *authKeys, *root)
+	server.LaunchServer(*port, *hostKey, *authKeys, *root, *healthSocket)
 }

@@ -4,7 +4,7 @@ Write it in Go so it builds into one static binary.
 Use one binary, dot, with subcommands: serve, supervise, dashboard, user, repo.
 Split the code into modules: server, supervisor, status, dashboard, admin.
 
-2. SSH git server (serve)
+2. SSH git server (serve) [✓]
 
 Allow only SSH, with public-key login and no passwords.
 Check keys against a dot-managed authorized_keys file.
@@ -12,10 +12,9 @@ Allow only pull (git-upload-pack) and push (git-receive-pack).
 Clean every repo path so users can’t reach anything outside the repo root.
 Use a persistent host key so clients don’t get “host key changed” warnings.
 
-3. Status and health API
+3. Health API [✓]
 
-Track uptime, active sessions, push and pull counts, recent operations and errors.
-Serve health and stats over a local unix socket, so nothing new is exposed on the network.
+Serve health over a local unix socket, so nothing new is exposed on the network.
 
 4. Supervisor (supervise)
 
