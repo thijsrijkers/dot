@@ -1,4 +1,4 @@
-1. Project setup
+1. Project setup [✓]
 
 Write it in Go so it builds into one static binary.
 Use one binary, dot, with subcommands: serve, supervise, dashboard, user, repo.
