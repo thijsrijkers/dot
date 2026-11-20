@@ -7,10 +7,12 @@ import (
 )
 
 const serverBinaryPath = "binary/dot-server"
+const supervisorBinaryPath = "binary/dot-supervisor"
 
 // binaries maps each output path to the main package it is built from.
 var binaries = map[string]string{
 	serverBinaryPath: "./server/cmd",
+	supervisorBinaryPath: "./supervisor/cmd",
 }
 
 func BuildBinaries() error {
