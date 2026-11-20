@@ -27,10 +27,6 @@ func main() {
 			log.Fatalf("supervisor %v", err)
 		}
 
-		if err := binary.LaunchServer(cfg); err != nil {
-			log.Fatalf("server: %v", err)
-		}
-
 	case "stop":
 		cfg, err := config.LoadConfig(config.Path)
 		if err != nil {
